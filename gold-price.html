@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цена на златото (1975-2025)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fef5e7 0%, #fdeaa3 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .chart-section {
+            padding: 20px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            position: sticky;
+            top: 0;
+            background: #b8860b;
+            color: white;
+            z-index: 10;
+        }
+        
+        th {
+            padding: 15px 25px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: #d4af37;
+        }
+        
+        tbody tr:nth-child(even) {
+            background: #fef5e7;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 30px;
+            background: #f9f9f9;
+            justify-content: center;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .stat-value.min { color: #e74c3c; }
+        .stat-value.max { color: #27ae60; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Цена на златото (1975-2025)</h1>
+            <p>Визуализация на средногодишните стойности (USD)</p>
+        </div>
+
+        <div class="chart-section">
+            <canvas id="goldChart"></canvas>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Година</th>
+                        <th>Средна цена (USD)</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">Минимална (1976)</div>
+                <div class="stat-value min">$124</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Максимална (2025)</div>
+                <div class="stat-value max">$4,420</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const data = [
+            { year: 1975, price: 160 }, { year: 1976, price: 124 }, { year: 1977, price: 147 },
+            { year: 1978, price: 193 }, { year: 1979, price: 307 }, { year: 1980, price: 612 },
+            { year: 1981, price: 459 }, { year: 1982, price: 375 }, { year: 1983, price: 423 },
+            { year: 1984, price: 360 }, { year: 1985, price: 317 }, { year: 1986, price: 367 },
+            { year: 1987, price: 446 }, { year: 1988, price: 436 }, { year: 1989, price: 380 },
+            { year: 1990, price: 383 }, { year: 1991, price: 362 }, { year: 1992, price: 343 },
+            { year: 1993, price: 359 }, { year: 1994, price: 384 }, { year: 1995, price: 384 },
+            { year: 1996, price: 387 }, { year: 1997, price: 331 }, { year: 1998, price: 294 },
+            { year: 1999, price: 278 }, { year: 2000, price: 279 }, { year: 2001, price: 271 },
+            { year: 2002, price: 310 }, { year: 2003, price: 363 }, { year: 2004, price: 409 },
+            { year: 2005, price: 444 }, { year: 2006, price: 603 }, { year: 2007, price: 695 },
+            { year: 2008, price: 871 }, { year: 2009, price: 972 }, { year: 2010, price: 1224 },
+            { year: 2011, price: 1571 }, { year: 2012, price: 1668 }, { year: 2013, price: 1411 },
+            { year: 2014, price: 1266 }, { year: 2015, price: 1160 }, { year: 2016, price: 1248 },
+            { year: 2017, price: 1257 }, { year: 2018, price: 1268 }, { year: 2019, price: 1392 },
+            { year: 2020, price: 1769 }, { year: 2021, price: 1799 }, { year: 2022, price: 1802 },
+            { year: 2023, price: 1942 }, { year: 2024, price: 2360 }, { year: 2025, price: 4420 }
+        ];
+        
+        const tableBody = document.getElementById('tableBody');
+        const labels = data.map(d => d.year);
+        const prices = data.map(d => d.price);
+
+        data.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${row.year}</td><td>$${row.price.toLocaleString()}</td>`;
+            tableBody.appendChild(tr);
+        });
+
+        const ctx = document.getElementById('goldChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Цена (USD)',
+                    data: prices,
+                    borderColor: '#d4af37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.05)',
+                    borderWidth: 1, // Много тънка линия за по-добра четимост
+                    pointRadius: 1,
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: false, ticks: { callback: value => '$' + value } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

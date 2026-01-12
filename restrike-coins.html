@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рестрайк Монети - Таблица</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 10px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 15px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .content {
+            padding: 15px;
+        }
+        
+        .country-section {
+            margin-bottom: 30px;
+        }
+        
+        .country-header {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            table-layout: fixed;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            color: #667eea;
+            text-align: left;
+            padding: 10px;
+            font-size: 13px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eee;
+            width: 33.33%;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            color: #555;
+            vertical-align: middle;
+            word-wrap: break-word;
+        }
+
+        .badge {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        
+        .badge-red { background-color: #e74c3c; }
+        .badge-green { background-color: #27ae60; }
+        .badge-orange { background-color: #f39c12; }
+
+        .legend {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .legend h3 { font-size: 18px; margin-bottom: 15px; }
+        
+        .legend-item {
+            margin-bottom: 15px;
+        }
+
+        .legend-term {
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .legend-desc {
+            font-size: 14px;
+            color: #666;
+            padding-left: 16px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            .header h1 { font-size: 22px; }
+            th, td { padding: 8px 5px; font-size: 12px; }
+            .country-header { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Рестрайк Монети</h1>
+            <p>Официални европейски емисии</p>
+        </div>
+        
+        <div class="content">
+            
+            <div class="country-section">
+                <div class="country-header">🇦🇹 Австрия</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Монета</th>
+                            <th>Препечатка</th>
+                            <th>Емитирана</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 Дукат 1915</td>
+                            <td><span class="badge badge-red"></span>Commercial Restrike</td>
+                            <td>1920–днес</td>
+                        </tr>
+                        <tr>
+                            <td>4 Дуката 1915</td>
+                            <td><span class="badge badge-red"></span>Commercial Restrike</td>
+                            <td>1920–днес</td>
+                        </tr>
+                        <tr>
+                            <td>10 Корони 1912</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                            <td>1912–1992</td>
+                        </tr>
+                        <tr>
+                            <td>20 Корони 1915</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                            <td>1915–днес</td>
+                        </tr>
+                        <tr>
+                            <td>100 Корони 1915</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                            <td>1915–днес</td>
+                        </tr>
+                        <tr>
+                            <td>4 Флорина / 10 Франка 1892</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                            <td>1892–днес</td>
+                        </tr>
+                        <tr>
+                            <td>8 Флорина / 20 Франка 1892</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                            <td>1892–днес</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="country-section">
+                <div class="country-header">🇫🇷 Франция</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Монета</th>
+                            <th>Препечатка</th>
+                            <th>Емитирана</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>20 Франка „Мариана" 1907–1914</td>
+                            <td><span class="badge badge-orange"></span>Bullion Restrike</td>
+                            <td>1951–1960</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="country-section">
+                <div class="country-header">🇨🇭 Швейцария</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Монета</th>
+                            <th>Препечатка</th>
+                            <th>Емитирана</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>20 Франка „Вренели" 1935 L</td>
+                            <td><span class="badge badge-orange"></span>Bullion Restrike</td>
+                            <td>1945–1947</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="country-section">
+                <div class="country-header">🇪🇸 Испания</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Монета</th>
+                            <th>Препечатка</th>
+                            <th>Емитирана</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>25 Песети „Алфонсо XII" &#10038;1876–1881&#10038;</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                            <td>1961–1962</td>
+                        </tr>
+                        <tr>
+                            <td>25 Песети „Алфонсо XIII" &#10038;1887–1890&#10038;</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+    <td>1961–1962</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="country-section">
+                <div class="country-header">🇭🇺 Унгария</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Монета</th>
+                            <th>Препечатка</th>
+                            <th>Емитирана</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4 Форинта / 10 Франка 1892 UP.</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                          <td>1967–1974 (1975–днес)</td>
+                        </tr>
+                        <tr>
+                            <td>8 Форинта / 20 Франка 1892 UP.</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                            <td>1967–1974 (1975–днес)</td>
+                        </tr>
+                        <tr>
+                            <td>100 Корони 1908 UP.</td>
+                            <td><span class="badge badge-green"></span>Official Restrike</td>
+                            <td>1908–1974 (1975–днес)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="legend">
+                <h3>📋 Видове препечатки:</h3>
+                
+                <div class="legend-item">
+                    <div class="legend-term"><span class="badge badge-green"></span> Official Restrike</div>
+                    <div class="legend-desc">Обикновено не се приемат като законно платежно средство. ​Предназначени са основно за нумизматика, колекциониране и частни инвестиции.</div>
+                </div>
+
+                <div class="legend-item">
+                    <div class="legend-term"><span class="badge badge-orange"></span> Bullion Restrike</div>
+                    <div class="legend-desc">Често запазват статута на законно платежно средство. Използват се предимно за създаване на банкови резерви и осигуряване на икономическа стабилност.</div>
+                </div>
+
+                <div class="legend-item">
+                    <div class="legend-term"><span class="badge badge-red"></span> Commercial Restrike</div>
+                    <div class="legend-desc">Не са законно платежно средство в модерната парична система. Служат като сертифициран инструмент за международна търговия със злато.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
